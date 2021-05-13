@@ -38,9 +38,32 @@ loader.load("models/bookModel.json", (group) => {
   scene.add(group)
 })
 
+// var texture = new THREE.TextureLoader().load("textures/tierra.jpg");
+// var texture1 = new THREE.TextureLoader().load("textures/nm.png");
+
+// var geo = new THREE.SphereGeometry(2, 24, 16);
+// var materials = new THREE.MeshBasicMaterial({ map: texture });
+// var materials = new THREE.MeshPhongMaterial({ color: 0xaaaaaa, specular: 0x333333, shininess: 15, map: texture, normalMap: texture1 });
+
+// var sphere = new THREE.Mesh(geo, materials);
+// sphere.position.x = 30;
+// sphere.position.y = -30;
+// scene.add(sphere);
+
+// loader.load("perro.json", function( group ) {
+//   mesh = group.children[0];
+//   mesh.material = new THREE.MeshPhongMaterial({color: 0xaaaaaa, specular: 0x333333, shininess: 15, map: texture, normalMap: texture1})
+//   mesh.position.x = 5;
+//   scene.add( mesh );
+// });
+
 // Lago
+var texturaLago = new THREE.TextureLoader().load("textures/lago.jpg");
+var texturaNormalLago = new THREE.TextureLoader().load("textures/normalLago.png");
 loader.load("models/lakeModel.json", (group) => {
   group.scale.set(1.1, 1.5, 1.5)
+  group.children[0].material = new THREE.MeshPhongMaterial({ color: 0xaaaaaa, specular: 0x333333, shininess: 15, map: texturaLago, normalMap: texturaNormalLago })
+  // group.children[0].material = new THREE.MeshPhongMaterial({ color: 0xaaaaaa, specular: 0x333333, shininess: 15, map: texturaLago })
   group.position.set(100, -40, -110)
   scene.add(group)
 })
@@ -187,7 +210,6 @@ window.addEventListener('resize', () => {
   renderer.setSize(sizes.width, sizes.height)
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 })
-
 
 const animate = () => {
   // Call this method again on the next frame
